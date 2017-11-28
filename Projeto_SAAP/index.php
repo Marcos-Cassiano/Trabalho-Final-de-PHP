@@ -7,6 +7,7 @@
     <body>
         <?php
         // put your code here
+// Professor adicionou essa linha
         ?>
     </body>
 </html>
