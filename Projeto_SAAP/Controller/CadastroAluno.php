@@ -1,8 +1,46 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @projeto Projeto_SAAP
+ * @Nome CadastroAluno
+ * @Descrição
+ * @copyright (c) 29/11/2017, Marcos Cassiano
+ * @author Marcos Cassiano Santa Brigida
+ * @email mcsbrigida@hotmail.com
  */
+if(isset($_POST)){
+    require '../Config/Config.inc.php';
+    
+    $email = (string) ($_POST['email']);
+    $read = new Read();
+    
+    $read->ExecutarRead('aluno', "where email='{$email}'");
+    $verifica_aluno = $read->getResultado();
+    
+    if(!empty($verifica_aluno)){
+        echo "<script>alert(Você já foi cadastrado);</script>";
+    }
+    
+    $senha = (string) $_POST['senha'];
+    $senha2 = (string) $_POST['senha2'];
+    
+    if($senha != $senha2){
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+    
+    $validar = new Validar();
+    if(!$validar->Email($email)){
+        echo "<script>alert(Email Inválido);</script>";
+        die();
+    }
+    
+    $nome = (string) $_POST['nome_completo'];
+    
+    $create = new Create();
+    
+    $aluno = new CadastroAluno($nome, $email, md5($senha));
+    $create->ExecutarCreate('trabalhophp.aluno', $aluno->getVetor());
+    
+}else{
+    echo "<script>alert(Formulário não preenchido!);</script>";
+}
 

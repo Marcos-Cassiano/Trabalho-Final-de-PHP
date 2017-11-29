@@ -11,15 +11,20 @@ define('BASE', 'http://localhost/Projeto_SAAP/');
 define('HOST', 'localhost'); // Local onde o banco de dados está armazenado
 define('USUARIO', 'Marcos'); // Usuário de acesso ao banco de dados
 define('SENHA', 'lessinha007');    // Senha de acesso ao banco de dados
-define('BANCO', 'tads');     // Nome do Banco de Dados
+define('BANCO', 'trabalhophp');     // Nome do Banco de Dados
 // CARREGAMENTO AUTOMATICO DE CLASSES ##################################
 function __autoload($classe) {
-    if (file_exists("classes/" . $classe . ".class.php")):
-        require_once("classes/" . $classe . ".class.php");
-    else:
+    if (file_exists("../Model/Banco" . $classe . ".php")){
+        require_once("../Model/Banco" . $classe . ".php");
+    }
+    else if(file_exists("../Model/Auxiliares" . $classe . ".php")){
+        require_once ("../Model/Auxiliares" . $classe . ".php");
+    }
+        
+    else{
         trigger_error("Erro ao incluir classes/" . $classe . ".class.php", E_USER_ERROR);
         die; // Prevenindo o travamento do código
-    endif;
+    }
 }
 // TRATAMENTO DE ERROS #################################################
 define('MSG_SUCESSO', 'sucesso');
