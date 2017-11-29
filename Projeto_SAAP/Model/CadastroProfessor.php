@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * @projeto Projeto_SAAP
  * @Nome CadastroProfessor
@@ -15,5 +8,25 @@
  * @email mcsbrigida@hotmail.com
  */
 class CadastroProfessor {
-    //put your code here
+    private $nome;
+    private $email;
+    private $senha;
+    private $disciplina;
+    
+    function __construct($nome, $email, $senha, $disciplina) {
+        $this->nome = $nome;
+        $this->email = $email;
+        $this->senha = $senha;
+        $this->disciplina = $disciplina;
+    }
+    
+    public function getVetor(){
+        array(
+            'nome'=> $this->nome,
+            'email'=> $this->email,
+            'senha'=> $this->senha,
+            'disciplina'=> $this->disciplina
+        );
+    }
+
 }

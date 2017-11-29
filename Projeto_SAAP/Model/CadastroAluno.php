@@ -1,11 +1,4 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * @projeto Projeto_SAAP
  * @Nome CadastroAluno
@@ -14,6 +7,23 @@
  * @author Marcos Cassiano Santa Brigida
  * @email mcsbrigida@hotmail.com
  */
-class CadastroAluno {
-    //put your code here
+class CadastroAluno extends ConexaoBD{
+    private $nome;
+    private $email;
+    private $senha;
+    
+    function __construct($nome, $email, $senha) {
+        $this->nome = $nome;
+        $this->email = $email;
+        $this->senha = $senha;
+    }
+    
+    public function getVetor(){
+        return array(
+            'nome'=> $this->nome,
+            'email'=> $this->email,
+            'senha'=> $this->senha
+        );
+    }
+
 }
