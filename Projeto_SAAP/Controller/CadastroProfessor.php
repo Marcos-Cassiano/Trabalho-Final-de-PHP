@@ -8,7 +8,7 @@
  * @email mcsbrigida@hotmail.com
  */
 if(isset($_POST)){
-    require '../Config/Config.inc.php';
+    require '../include/Config.inc.php';
     
     $email = (string) ($_POST['email']);
     $read = new Read();
@@ -18,27 +18,42 @@ if(isset($_POST)){
     
     if(!empty($verifica_professor)){
         echo "<script>alert('Você já foi cadastrado');</script>";
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        die();
     }
-    
     $senha = (string) $_POST['senha'];
     $senha2 = (string) $_POST['senha2'];
     
-    if($senha != $senha2){
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-    
     $validar = new Validar();
     if(!$validar->Email($email)){
-        echo "<script>alert('Email Inválido');</script>";
+        die();
+    }
+        
+    if($senha == "" || $senha2 == "" || $senha != $senha2){
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
         die();
     }
     
+    $disciplina = new Read;
+    $disciplina->ExecutarRead('disciplina', 'disciplina');
+    $disciplinas = $disciplina->getResultado();
+    
+    if($disciplinas){
+        while ($disciplinas){
+            
+        }
+    }
+    
     $nome = (string) $_POST['nome'];
+    if($nome == ""){
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        die();
+    }
+    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
     $create = new Create();
     
-    $professor = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
-    $create->ExecutarCreate('trabalhophp.aluno', $professor);
     
+    $create->ExecutarCreate('trabalhophp.professor', $aluno);
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }

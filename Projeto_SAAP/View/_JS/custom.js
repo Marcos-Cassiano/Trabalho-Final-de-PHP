@@ -69,7 +69,7 @@ if(senha.value !== "" && senha2.value !== "" && senha.value !== senha2.value){
 /* Validação da disciplina */
 caixa_disciplina = document.querySelector('.msg-disciplina');
 if(disciplina.value === ""){
-    caixa_disciplina.innerHTML = 'Favor preencher disciplina';
+    caixa_disciplina.innerHTML = 'Favor selecione uma disciplina';
     caixa_disciplina.style.display = 'block';
     contErro += 1;
 }else{

@@ -18,18 +18,32 @@ if(isset($_POST)){
     
     if(!empty($verifica_aluno)){
         echo "<script>alert('Você já foi cadastrado');</script>";
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        die();
     }
     $senha = (string) $_POST['senha'];
-    $senha2 = (string) $_POST['senha2'];    
+    $senha2 = (string) $_POST['senha2'];
+    
+    $validar = new Validar();
+    if(!$validar->Email($email)){
+        die();
+    }
+        
+    if($senha == "" || $senha2 == "" || $senha != $senha2){
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        die();
+    }
+    
     $nome = (string) $_POST['nome'];
+    if($nome == ""){
+        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        die();
+    }
     $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
-    $erro = false;
-    if(!$erro){
     $create = new Create();
     
     
     $create->ExecutarCreate('trabalhophp.aluno', $aluno);
-    }   
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }

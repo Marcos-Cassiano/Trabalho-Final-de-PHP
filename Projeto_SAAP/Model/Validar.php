@@ -29,6 +29,14 @@ class Validar {
             return false;
         endif;
     }
+    public static function isMail(string $email){
+    $er = "/^(([0-9a-zA-Z]+[-._+&])*[0-9a-zA-Z]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}){0,1}$/";
+    if (preg_match($er, $email)){
+	return true;
+    } else {
+	return false;
+    }
+}
     /**
      * Executa validação de formato da URL no padrão indicado pela RFC 2396
      * a RFC 2396 define o formato padrão endereços de internet
