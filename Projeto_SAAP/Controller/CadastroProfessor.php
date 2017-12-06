@@ -37,7 +37,7 @@ if(isset($_POST)){
     $create = new Create();
     
     $professor = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
-    $create->ExecutarCreate('trabalhophp.aluno', $professor->getVetor());
+    $create->ExecutarCreate('trabalhophp.aluno', $professor);
     
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";

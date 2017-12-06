@@ -19,27 +19,17 @@ if(isset($_POST)){
     if(!empty($verifica_aluno)){
         echo "<script>alert('Você já foi cadastrado');</script>";
     }
-    
     $senha = (string) $_POST['senha'];
-    $senha2 = (string) $_POST['senha2'];
-    
-    if($senha != $senha2){
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-    }
-    
-    $validar = new Validar();
-    if(!$validar->Email($email)){
-        echo "<script>alert('Email Inválido');</script>";
-        die();
-    }
-    
+    $senha2 = (string) $_POST['senha2'];    
     $nome = (string) $_POST['nome'];
-    
+    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
+    $erro = false;
+    if(!$erro){
     $create = new Create();
     
-    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
-    $create->ExecutarCreate('trabalhophp.aluno', $aluno);
     
+    $create->ExecutarCreate('trabalhophp.aluno', $aluno);
+    }   
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }
