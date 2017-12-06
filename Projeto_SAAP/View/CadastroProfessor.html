@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="pt-br">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .msg-erro{color: red;}
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <h1>Formulário de Cadastro</h1>
+            <form action="../Controller/CadastroAluno.php" method="post" id="form">
+                <div>
+                <label>Nome: </label>
+                <input type="text" name="nome" class="form-control" placeholder="Informe o Nome" id="nome">
+                <span class="msg-erro msg-nome"></span>
+                </div>
+                <div>
+                <label>E-mail: </label>
+                <input type="text" name="email" class="form-control" placeholder="Informe o E-mail" id="email">
+                <span class="msg-erro msg-email"></span>
+                </div>
+                <div>
+                <label>Senha: </label>
+                <input type="password" name="senha" class="form-control" placeholder="Informe a Senha" id="senha">
+                <span class="msg-erro msg-senha"></span>
+                </div>
+                <div>
+                <label>Confirme a Senha: </label>
+                <input type="password" name="senha2" class="form-control" placeholder="Digite a Senha novamente" id="senha2">
+                <span class="msg-erro msg-senha2"></span>
+                </div>
+                <div>
+                    <select>
+                        
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="botao">
+                    Cadastrar
+                </button>
+            </form>
+        </div>
+        <script src="_JS/custom.js" type="text/javascript"></script>
     </body>
 </html>
+

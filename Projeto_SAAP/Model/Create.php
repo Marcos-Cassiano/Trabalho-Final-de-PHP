@@ -77,7 +77,8 @@ class Create extends ConexaoBD {
             $this->Resultado = $this->Conexao->lastInsertId(); // Capturando respostas do banco
         } catch (PDOException $e) {
             $this->Resultado = null;
-            trigger_error("Erro ao cadastrar",$e->getCode());
+            echo $e->getMessage();
+            die();
         }
     }
 }

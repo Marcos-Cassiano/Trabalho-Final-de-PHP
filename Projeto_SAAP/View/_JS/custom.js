@@ -10,6 +10,7 @@ function validaCadastro(evt){
     var email = document.getElementById('email');
     var senha = document.getElementById('senha');
     var senha2 = document.getElementById('senha2');
+    var disciplina = document.getElementById('disciplina');
     var filtro = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     var contErro = 0;
 
@@ -61,6 +62,16 @@ if(senha.value !== "" && senha2.value !== "" && senha.value !== senha2.value){
     caixa_senha2.innerHTML = "O campo Confirme a Senha é diferente do campo Senha";
     caixa_senha2.style.display = 'block';
     contErro += 1;
+}
+
+/* Validação da disciplina */
+caixa_disciplina = document.querySelector('.msg-disciplina');
+if(disciplina.value === ""){
+    caixa_disciplina.innerHTML = "Favor preencher disciplina";
+    caixa_disciplina.style.display = 'block';
+    contErro += 1;
+}else{
+    caixa_disciplina.style.display = 'none';
 }
 if(contErro > 0){
     evt.preventDefault();

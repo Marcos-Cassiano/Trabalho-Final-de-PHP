@@ -8,7 +8,7 @@
  * @email mcsbrigida@hotmail.com
  */
 if(isset($_POST)){
-    require '../Config/Config.inc.php';
+    require '../include/Config.inc.php';
     
     $email = (string) ($_POST['email']);
     $read = new Read();
@@ -17,7 +17,7 @@ if(isset($_POST)){
     $verifica_aluno = $read->getResultado();
     
     if(!empty($verifica_aluno)){
-        echo "<script>alert(Você já foi cadastrado);</script>";
+        echo "<script>alert('Você já foi cadastrado');</script>";
     }
     
     $senha = (string) $_POST['senha'];
@@ -29,18 +29,18 @@ if(isset($_POST)){
     
     $validar = new Validar();
     if(!$validar->Email($email)){
-        echo "<script>alert(Email Inválido);</script>";
+        echo "<script>alert('Email Inválido');</script>";
         die();
     }
     
-    $nome = (string) $_POST['nome_completo'];
+    $nome = (string) $_POST['nome'];
     
     $create = new Create();
     
-    $aluno = new CadastroAluno($nome, $email, md5($senha));
-    $create->ExecutarCreate('trabalhophp.aluno', $aluno->getVetor());
+    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
+    $create->ExecutarCreate('trabalhophp.aluno', $aluno);
     
 }else{
-    echo "<script>alert(Formulário não preenchido!);</script>";
+    echo "<script>alert('Formulário não preenchido!');</script>";
 }
 

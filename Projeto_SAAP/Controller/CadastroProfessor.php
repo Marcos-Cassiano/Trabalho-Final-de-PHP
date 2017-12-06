@@ -17,7 +17,7 @@ if(isset($_POST)){
     $verifica_professor = $read->getResultado();
     
     if(!empty($verifica_professor)){
-        echo "<script>alert(Você já foi cadastrado);</script>";
+        echo "<script>alert('Você já foi cadastrado');</script>";
     }
     
     $senha = (string) $_POST['senha'];
@@ -29,18 +29,17 @@ if(isset($_POST)){
     
     $validar = new Validar();
     if(!$validar->Email($email)){
-        echo "<script>alert(Email Inválido);</script>";
+        echo "<script>alert('Email Inválido');</script>";
         die();
     }
     
-    $nome = (string) $_POST['nome_completo'];
-    $disciplina = (string) $_POST['disciplina'];
+    $nome = (string) $_POST['nome'];
     $create = new Create();
     
-    $professor = new CadastroProfessor($nome, $email, md5($senha), $disciplina);
+    $professor = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
     $create->ExecutarCreate('trabalhophp.aluno', $professor->getVetor());
     
 }else{
-    echo "<script>alert(Formulário não preenchido!);</script>";
+    echo "<script>alert('Formulário não preenchido!');</script>";
 }
 
