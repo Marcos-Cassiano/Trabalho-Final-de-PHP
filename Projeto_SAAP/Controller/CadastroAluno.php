@@ -18,7 +18,7 @@ if(isset($_POST)){
     
     if(!empty($verifica_aluno)){
         echo "<script>alert('Você já foi cadastrado');</script>";
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
     $senha = (string) $_POST['senha'];
@@ -26,19 +26,36 @@ if(isset($_POST)){
     
     $validar = new Validar();
     if(!$validar->Email($email)){
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
         
     if($senha == "" || $senha2 == "" || $senha != $senha2){
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
     
     $nome = (string) $_POST['nome'];
+    
     if($nome == ""){
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
+    
+    $sobrenome = (string) $_POST['sobrenome'];
+    
+    if($sobrenome == ""){
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
+        die();
+    }
+    
+    $telefone = $_POST['telefone'];
+    
+    if($telefone != "" || !is_numeric($telefone)){
+        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
+        die();
+    }
+    
     $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
     $create = new Create();
     

@@ -13,6 +13,7 @@ class Read extends ConexaoBD {
     private $Select;    // Armazena o select que vai realizar a leitura
     private $Valores;   // Armazena os valores que serão substituidos no select
     private $Resultado; // Armazena o resultado das operações no banco 
+    private $coluna;
     /** @var PDOStatement */
     private $sql_preparado;
     /** @var PDO */
@@ -30,7 +31,7 @@ class Read extends ConexaoBD {
              $this->AlterarValores($Valores);
         endif;
        
-        $this->Select = "SELECT * FROM {$Tabela} {$Termos}";
+        $this->Select = "SELECT {$this->coluna} FROM {$Tabela} {$Termos}";
         $this->Executar();
     }
     /**

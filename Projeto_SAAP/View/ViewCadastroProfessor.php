@@ -23,6 +23,11 @@ and open the template in the editor.
                 <span class='msg-erro msg-nome'></span><br>
                 </div>
                 <div>
+                <label>Sobrenome: </label>
+                <input type="text" name="sobrenome" class="form-control" placeholder="Informe o Sobrenome" id="sobrenome"><br>
+                <span class='msg-erro msg-sobrenome'></span><br>
+                </div>
+                <div>
                 <label>E-mail: </label>
                 <input type="text" name="email" class="form-control" placeholder="Informe o E-mail" id="email"><br>
                 <span class='msg-erro msg-email'></span><br>
@@ -36,6 +41,11 @@ and open the template in the editor.
                 <label>Confirme a Senha: </label>
                 <input type="password" name="senha2" class="form-control" placeholder="Digite a Senha novamente" id="senha2"><br>
                 <span class='msg-erro msg-senha2'></span><br>
+                </div>
+                <div>
+                    <label>Telefone: (Opcional)</label>
+                    <input type="text" name="telefone" class="form-control" onkeypress="mascara(this, '## #####-####')" maxlength="13" placeholder="Digite seu telefone" id="telefone">
+                    <span class='msg-erro msg-telefone'></span>
                 </div>
                 <div>
                 <label>Disciplina: </label>
