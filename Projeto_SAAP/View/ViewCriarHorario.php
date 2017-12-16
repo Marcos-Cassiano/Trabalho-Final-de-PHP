@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
+    header("location:../View/Viewlogin.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +22,5 @@
                 </div>
                 <input type="submit" value="Criar" class="btn btn-primary" id='botao' name="submit"/><br><br>
         </form>
-        <?php
-        ?>
     </body>
 </html>

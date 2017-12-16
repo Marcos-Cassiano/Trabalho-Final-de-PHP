@@ -14,7 +14,7 @@ require '../Model/Read.php';
 
 $read = new Read();
 
-$read->ExecutarRead('id', 'professor', "where email= '{$_SESSION['email']}'");
+$read->ExecutarRead('*', 'professor', "Where id=(select max(id) from horario)");
 
 try {
 
@@ -37,5 +37,6 @@ $nome = $read->getResultado()[0]['nome'];
     </head>
     <body>
         <h1>Bem Vindo</h1>
+        <a href="ViewCriarHorario.php">Criar Horario</a>
     </body>
 </html>
