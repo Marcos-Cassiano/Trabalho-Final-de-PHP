@@ -42,6 +42,7 @@ if(isset($_POST )){
     $create = new Create();
     
     $create->ExecutarCreate('professor', $professor);
+    header("location:../View/ViewLogin.php");
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }
