@@ -7,61 +7,47 @@
  * @author Marcos Cassiano Santa Brigida
  * @email mcsbrigida@hotmail.com
  */
+session_start();
 if(isset($_POST)){
     require '../include/Config.inc.php';
     
     $email = (string) ($_POST['email']);
+    $nome = (string) $_POST['nome'];    
+    $sobrenome = (string) $_POST['sobrenome'];    
+    $telefone =(string) $_POST['telefone'];
+    $senha = (string) $_POST['senha'];
+    $senha2 = (string) $_POST['senha2'];
+    
     $read = new Read();
     
-    $read->ExecutarRead('aluno', "where email='{$email}'");
+    $read->ExecutarRead("*","aluno", "where email = '{$email}'");
     $verifica_aluno = $read->getResultado();
     
     if(!empty($verifica_aluno)){
         echo "<script>alert('Você já foi cadastrado');</script>";
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
-    $senha = (string) $_POST['senha'];
-    $senha2 = (string) $_POST['senha2'];
     
     $validar = new Validar();
     if(!$validar->Email($email)){
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
         die();
     }
         
-    if($senha == "" || $senha2 == "" || $senha != $senha2){
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
+    if($senha != $senha2){
         die();
     }
     
-    $nome = (string) $_POST['nome'];
-    
-    if($nome == ""){
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
+    if(!$telefone == "" && !is_numeric($telefone)){
         die();
     }
     
-    $sobrenome = (string) $_POST['sobrenome'];
-    
-    if($sobrenome == ""){
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
-        die();
-    }
-    
-    $telefone = $_POST['telefone'];
-    
-    if($telefone != "" || !is_numeric($telefone)){
-        echo "<script>window.location.href = '../View/ViewCadastroAluno.php';<script>";
-        die();
-    }
-    
-    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
+    $aluno = array('nome'=> $nome,'sobrenome'=> $sobrenome, 'email'=> $email, 'senha'=> md5($senha), 'telefone'=> $telefone);
     $create = new Create();
     
     
     $create->ExecutarCreate('trabalhophp.aluno', $aluno);
+    header("location:../View/ViewLogin.php");
 }else{
-    echo "<script>alert('Formulário não preenchido!');</script>";
+    echo "<script>alert('Formulário Vazio!');</script>"; 
 }
 

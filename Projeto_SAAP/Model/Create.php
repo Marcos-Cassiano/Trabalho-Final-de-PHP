@@ -68,10 +68,11 @@ class Create extends ConexaoBD {
     //Obtém a Conexão e a Syntax, executa a query!
     private function Executar() {
         $this->Connect();
+        
         try {
             
             // Existe uma diferença aqui, não foi necessário executar o bindValue ou bindParam, pois a propria 
-            // classe PDO vai identificar os links que precisam ser substituidos no sql preparado
+            // classe PDO vai identificar os links que precisam ser substituidos no sql preparado    
             
             $this->sql_preparado->execute($this->Dados); 
             $this->Resultado = $this->Conexao->lastInsertId(); // Capturando respostas do banco

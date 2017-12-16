@@ -4,6 +4,9 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+    include_once '../include/Config.inc.php';
+?>
 <html lang="pt-br">
     <head>
         <title>TODO supply a title</title>
@@ -44,13 +47,19 @@ and open the template in the editor.
                 </div>
                 <div>
                     <label>Telefone: (Opcional)</label>
-                    <input type="text" name="telefone" class="form-control" onkeypress="mascara(this, '## #####-####')" maxlength="13" placeholder="Digite seu telefone" id="telefone">
-                    <span class='msg-erro msg-telefone'></span>
+                    <input type="text" name="telefone" class="form-control" onkeypress="mascara(this, '## #####-####')" maxlength="13" placeholder="Digite seu telefone" id="telefone"><br>
+                    <span class='msg-erro msg-telefone'></span><br>
                 </div>
                 <div>
                 <label>Disciplina: </label>
                     <select name="disciplina">
-                        <option>Selecione a Disciplina</option>
+                        <option>--Selecione--</option>
+                        <?php
+                        $resultado = "SELECT * FROM disciplina";
+                        $getResultado = mysqli_query($conn, $resultado);
+                        while($row_disciplina = mysqli_fetch_assoc($getResultado)) { ?>
+                        <option value="<?php echo $row_disciplina['id'] ?>"><?php echo $row_disciplina['nome'] ?></option>
+                        <?php } ?>
                     </select><br>
                     <span class='msg-erro msg-disciplina'></span><br>
                 </div>
@@ -59,7 +68,7 @@ and open the template in the editor.
                 </button><br><br>
                 
                 Já tem uma conta?
-                <a href="Login.html">Clique Aqui</a>
+                <a href="ViewLogin.php">Clique Aqui</a>
             </form>
         </div>
         <script src="_JS/custom.js" type="text/javascript"></script>

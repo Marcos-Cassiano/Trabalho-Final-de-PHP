@@ -11,3 +11,4 @@ define('HOST', 'localhost');
                 exit("Erro ao incluir Model/".$class.".php");
         }
 }
+$conn = mysqli_connect('localhost', 'Marcos', 'lessinha007', 'trabalhophp');

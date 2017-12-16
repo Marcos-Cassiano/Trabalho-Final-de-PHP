@@ -13,7 +13,6 @@ class Read extends ConexaoBD {
     private $Select;    // Armazena o select que vai realizar a leitura
     private $Valores;   // Armazena os valores que serão substituidos no select
     private $Resultado; // Armazena o resultado das operações no banco 
-    private $coluna;
     /** @var PDOStatement */
     private $sql_preparado;
     /** @var PDO */
@@ -21,17 +20,18 @@ class Read extends ConexaoBD {
     /**
      * ExecutarRead: Executa uma leitura simplificada com Prepared Statments. Basta informar o nome da tabela,
      * os termos da seleção e os valores a serem lidos para executar.
+     * @param STRING $colunas = a ou as colunas que serão selecionadas
      * @param STRING $Tabela = Nome da tabela
      * @param STRING $Termos = WHERE | ORDER | LIMIT :limit | OFFSET :offset
      * @param STRING $Valores = Os valores que serão substituidos na string do sql
-     */
-    public function ExecutarRead($Tabela, $Termos = null, $Valores = null) {
+     */        
+    public function ExecutarRead($colunas, $Tabela, $Termos = null, $Valores = null) {
          if (!empty($Valores)):
             // Coloca uma string em um array
              $this->AlterarValores($Valores);
         endif;
        
-        $this->Select = "SELECT {$this->coluna} FROM {$Tabela} {$Termos}";
+        $this->Select = "SELECT {$colunas} FROM {$Tabela} {$Termos}";
         $this->Executar();
     }
     /**

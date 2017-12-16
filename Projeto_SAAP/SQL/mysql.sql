@@ -5,24 +5,28 @@ USE DATABASE trabalhophp;
 CREATE TABLE IF NOT EXISTS professor(
     id int NOT NULL AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
+    sobrenome varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
     senha varchar(50) NOT NULL,
+    telefone varchar(50) NOT NULL,
     id_disciplina int NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(id_disciplina) REFERENCES disciplina(id)
 );
 
-CREATE TABLE IF NOT EXISTS aluno(
+CREATE TABLE IF NOT EXISTS professor(
     id int NOT NULL AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
+    sobrenome varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
     senha varchar(50) NOT NULL,
+    telefone varchar(50) NOT NULL,
     PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS disciplina(
     id int NOT NULL AUTO_INCREMENT,
-    disciplina varchar(50) NOT NULL,
+    nome varchar(50) NOT NULL,
     PRIMARY KEY(id)
 );
 

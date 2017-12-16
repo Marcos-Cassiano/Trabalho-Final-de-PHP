@@ -16,11 +16,11 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
     }
     $read = new Read();
     
-    $read->ExecutarRead('aluno', "where id = '{$email_login}'");
+    $read->ExecutarRead('*','aluno', "where email = '{$email_login}'");
     $capturaBanco_aluno = $read->getResultado();
     
     if(!$capturaBanco_aluno){
-        $read->ExecutarRead('professor', "where id = '{$email_login}'");
+        $read->ExecutarRead('*', 'professor', "where email = '{$email_login}'");
         $capturaBanco_prof = $read->getResultado();
     }
     
@@ -29,7 +29,11 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
             $_SESSION['logado'] = true;
             $_SESSION['aluno'] = true;
             $_SESSION['email'] = $email_login;
-            echo "<script>alert('Login feito com sucesso');</script>";
+            header("Location:../View/ViewUsuarioAluno.php");
+            exit();
+        }
+        else{
+            header("location:../View/ViewLogin.php");
             exit();
         }
     }elseif(!empty ($capturaBanco_prof)){
@@ -37,14 +41,14 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
             $_SESSION['logado'] = true;
             $_SESSION['aluno'] = false;
             $_SESSION['email'] = $email_login;
-            echo "<script>alert('Login feito com sucesso!');</script>";
+            header("Location:../View/ViewUsuarioProfessor.php");
             exit();
         }else{
-            echo "<script>alert('Usuário não cadastrado!');</script>";
+            header("location:../View/ViewLogin.php");
             exit();
         }
     }else{
-        echo "<script>alert('Login Vazio');</script>";
+        header("location:../View/ViewLogin.php");
         exit();
     }
 }

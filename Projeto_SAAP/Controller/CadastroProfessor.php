@@ -7,53 +7,41 @@
  * @author Marcos Cassiano Santa Brigida
  * @email mcsbrigida@hotmail.com
  */
-if(isset($_POST)){
+if(isset($_POST )){
     require '../include/Config.inc.php';
     
     $email = (string) ($_POST['email']);
+    $senha = (string) $_POST['senha'];
+    $senha2 = (string) $_POST['senha2'];
+    $telefone =(string) $_POST['telefone'];
+    $nome = (string) $_POST['nome'];
+    $disciplina =(int) $_POST['disciplina'];
+    $sobrenome =(string) $_POST['sobrenome'];
+    
     $read = new Read();
     
-    $read->ExecutarRead('professor', "where email='{$email}'");
+    $read->ExecutarRead('*', 'professor', "where email='{$email}'");
     $verifica_professor = $read->getResultado();
     
     if(!empty($verifica_professor)){
         echo "<script>alert('Você já foi cadastrado');</script>";
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
         die();
     }
-    $senha = (string) $_POST['senha'];
-    $senha2 = (string) $_POST['senha2'];
     
     $validar = new Validar();
     if(!$validar->Email($email)){
         die();
     }
         
-    if($senha == "" || $senha2 == "" || $senha != $senha2){
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
+    if($senha != $senha2){
         die();
     }
+    echo "masda";
     
-    $disciplina = new Read;
-    $disciplina->ExecutarRead('disciplina', 'disciplina');
-    $disciplinas = $disciplina->getResultado();
-    
-    if($disciplinas){
-        while ($disciplinas){
-            
-        }
-    }
-    
-    $nome = (string) $_POST['nome'];
-    if($nome == ""){
-        echo "<script>window.location.href = '../View/CadastroAluno.html';<script>";
-        die();
-    }
-    $aluno = array('nome'=> $nome, 'email'=> $email, 'senha'=> md5($senha));
+    $professor = array('nome'=> $nome, 'sobrenome'=> $sobrenome, 'email'=> $email, 'senha'=> md5($senha), 'telefone'=> $telefone, 'id_disciplina'=> $disciplina);
     $create = new Create();
     
-    
-    $create->ExecutarCreate('trabalhophp.professor', $aluno);
+    $create->ExecutarCreate('professor', $professor);
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }
