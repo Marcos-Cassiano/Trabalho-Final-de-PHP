@@ -1,7 +1,11 @@
 <?php
 session_start();
-if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
-    header("location:../View/Viewlogin.php");
+if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
+    header("location:../index.php");
+    die();
+}else if (!$_SESSION['logado'] and $_SESSION['aluno']) {//verificando se é professor e se está mesmo logado
+    echo "<script>alert('Professor nao logado')</script>";
+    header("location:../index.php");
     die();
 }
 ?>
@@ -22,5 +26,6 @@ if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
                 </div>
                 <input type="submit" value="Criar" class="btn btn-primary" id='botao' name="submit"/><br><br>
         </form>
+        <a href="../Controller/Sair.php">Sair</a>
     </body>
 </html>

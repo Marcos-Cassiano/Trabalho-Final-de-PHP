@@ -1,6 +1,12 @@
 CREATE DATABASE IF NOT EXISTS trabalhophp;
 
-USE DATABASE trabalhophp;
+USE trabalhophp;
+
+CREATE TABLE IF NOT EXISTS disciplina(
+    id int NOT NULL AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    PRIMARY KEY(id)
+);
 
 CREATE TABLE IF NOT EXISTS professor(
     id int NOT NULL AUTO_INCREMENT,
@@ -14,7 +20,7 @@ CREATE TABLE IF NOT EXISTS professor(
     FOREIGN KEY(id_disciplina) REFERENCES disciplina(id)
 );
 
-CREATE TABLE IF NOT EXISTS professor(
+CREATE TABLE IF NOT EXISTS aluno(
     id int NOT NULL AUTO_INCREMENT,
     nome varchar(50) NOT NULL,
     sobrenome varchar(50) NOT NULL,
@@ -24,15 +30,17 @@ CREATE TABLE IF NOT EXISTS professor(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE IF NOT EXISTS disciplina(
-    id int NOT NULL AUTO_INCREMENT,
-    nome varchar(50) NOT NULL,
-    PRIMARY KEY(id)
-);
-
 CREATE TABLE IF NOT EXISTS horario (
-    id int NOT NULL AUTO_INCREMENT,
+    id_h int NOT NULL AUTO_INCREMENT,
     dia date NOT NULL,
     hora time NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_professor) REFERENCES professor(id)
+);
+
+CREATE TABLE IF NOT EXISTS horarioaluno (
+    id_aluno int NOT NULL,
+    id_horario int NOT NULL,
+    FOREIGN KEY(id_aluno) REFERENCES aluno(id),
+    FOREIGN KEY(id_horario) REFERENCES horario(id_h)
 );

@@ -25,24 +25,26 @@ if(isset($_POST )){
     
     if(!empty($verifica_professor)){
         echo "<script>alert('Você já foi cadastrado');</script>";
+        header("location:../View/ViewCadastroProfessor.php");
         die();
     }
     
     $validar = new Validar();
     if(!$validar->Email($email)){
+        header("location:../View/ViewCadastroProfessor.php");
         die();
     }
         
     if($senha != $senha2){
+        header("location:../View/ViewCadastroProfessor.php");
         die();
     }
-    echo "masda";
     
     $professor = array('nome'=> $nome, 'sobrenome'=> $sobrenome, 'email'=> $email, 'senha'=> md5($senha), 'telefone'=> $telefone, 'id_disciplina'=> $disciplina);
     $create = new Create();
     
     $create->ExecutarCreate('professor', $professor);
-    header("location:../View/ViewLogin.php");
+    header("location:../index.php");
 }else{
     echo "<script>alert('Formulário não preenchido!');</script>";
 }

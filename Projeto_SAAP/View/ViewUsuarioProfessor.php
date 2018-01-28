@@ -1,20 +1,20 @@
 <?php
 session_start();
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
-    header("location:../../index.html");
+    header("location:../index.php");
     die();
-}else if (!$_SESSION['logado'] and $_SESSION['aluno']) {          //verificando se é professor e se está mesmo logado
+}else if (!$_SESSION['logado'] and $_SESSION['aluno']) {//verificando se é professor e se está mesmo logado
     echo "<script>alert('Professor nao logado')</script>";
-    header("location:../../view/login.html");
+    header("location:../index.php");
     die();
 }
 require '../include/Config.inc.php';
-require '../Model/ConexaoBD.php';
-require '../Model/Read.php';
+require '../model/ConexaoBD.php';
+require '../model/Read.php';
 
 $read = new Read();
 
-$read->ExecutarRead('*', 'professor', "Where id=(select max(id) from horario)");
+$read->ExecutarRead('id', 'professor', "where email= '{$_SESSION['email']}'");
 
 try {
 
@@ -37,6 +37,9 @@ $nome = $read->getResultado()[0]['nome'];
     </head>
     <body>
         <h1>Bem Vindo</h1>
-        <a href="ViewCriarHorario.php">Criar Horario</a>
+        <a href="ViewCriarHorario.php">Criar Horario</a><br><br>
+        <a href="ViewHorarioProfessor.php">Meus Horarios</a><br><br>
+        <a href="../Controller/Sair.php">Sair</a>
+        
     </body>
 </html>

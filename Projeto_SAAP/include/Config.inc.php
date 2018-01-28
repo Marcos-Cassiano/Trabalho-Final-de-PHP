@@ -1,7 +1,7 @@
 <?php
 define('HOST', 'localhost');
-        define('USUARIO', 'Marcos');
-        define('SENHA', 'lessinha007');
+        define('USUARIO', 'root');
+        define('SENHA', '');
         define('BANCO', 'trabalhophp');
         
         function __autoload($class){
@@ -11,4 +11,5 @@ define('HOST', 'localhost');
                 exit("Erro ao incluir Model/".$class.".php");
         }
 }
-$conn = mysqli_connect('localhost', 'Marcos', 'lessinha007', 'trabalhophp');
+$conn = mysqli_connect('localhost', 'root', '', 'trabalhophp');
+

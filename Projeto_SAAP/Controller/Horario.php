@@ -10,20 +10,10 @@ if(isset($_POST)){
     $data = $_POST['data'];
     $hora = $_POST['hora'];
     
-    $read = new Read();
     $create = new Create();
     
-    $dados = array('dia'=>$data, 'hora'=>$hora);
+    $dados = array('dia'=>$data, 'hora'=>$hora, 'id_professor'=>$_SESSION['id']);
     
     $create->ExecutarCreate('horario', $dados);
-    
-    $read->ExecutarRead("max('id') as id", 'horario');
-    $id_horario =$read->getResultado();
-    
-    $dados2 = array('id_professor'=> $_SESSION['id'], 'id_horario'=> $id_horario);
-    
-    $create->ExecutarCreate('professorhorario', $dados2);
-
-    
 }
 

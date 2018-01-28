@@ -68,7 +68,7 @@ and open the template in the editor.
                 </button><br><br>
                 
                 Já tem uma conta?
-                <a href="ViewLogin.php">Clique Aqui</a>
+                <a href="../index.php">Clique Aqui</a>
             </form>
         </div>
         <script src="_JS/custom.js" type="text/javascript"></script>

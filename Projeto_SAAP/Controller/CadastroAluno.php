@@ -25,19 +25,23 @@ if(isset($_POST)){
     
     if(!empty($verifica_aluno)){
         echo "<script>alert('Você já foi cadastrado');</script>";
+        header("location:../View/ViewCadastroAluno.php");
         die();
     }
     
     $validar = new Validar();
     if(!$validar->Email($email)){
+        header("location:../View/ViewCadastroAluno.php");
         die();
     }
         
     if($senha != $senha2){
+        header("location:../View/ViewCadastroAluno.php");
         die();
     }
     
     if(!$telefone == "" && !is_numeric($telefone)){
+        header("location:../View/ViewCadastroAluno.php");
         die();
     }
     
@@ -46,7 +50,7 @@ if(isset($_POST)){
     
     
     $create->ExecutarCreate('trabalhophp.aluno', $aluno);
-    header("location:../View/ViewLogin.php");
+    header("location:../index.php");
 }else{
     echo "<script>alert('Formulário Vazio!');</script>"; 
 }

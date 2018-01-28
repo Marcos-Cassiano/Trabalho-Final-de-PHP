@@ -33,7 +33,7 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
             exit();
         }
         else{
-            header("location:../View/ViewLogin.php");
+            header("location:../index.php");
             exit();
         }
     }elseif(!empty ($capturaBanco_prof)){
@@ -44,11 +44,11 @@ if(isset($_POST['email']) and isset($_POST['senha'])){
             header("Location:../View/ViewUsuarioProfessor.php");
             exit();
         }else{
-            header("location:../View/ViewLogin.php");
+            header("location:../index.php");
             exit();
         }
     }else{
-        header("location:../View/ViewLogin.php");
+        header("location:../index.php");
         exit();
     }
 }

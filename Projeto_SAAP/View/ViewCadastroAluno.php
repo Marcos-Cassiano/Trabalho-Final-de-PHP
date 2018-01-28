@@ -51,7 +51,7 @@ and open the template in the editor.
                 <input type="submit" value="Cadastrar" class="btn btn-primary" id='botao' name="submit"/><br><br>
                 
                 Já tem uma conta?
-                <a href="ViewLogin.php">Clique Aqui</a>
+                <a href="../index.php">Clique Aqui</a>
             </form>
         </div>
     </body>
