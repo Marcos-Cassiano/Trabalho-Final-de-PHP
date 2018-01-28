@@ -44,7 +44,7 @@ $id_aluno2 = $_SESSION['id_aluno'];
                     $dia = $row_horario['dia'];
                     $id = $row_horario['id_h'];
                 echo "<tr>";
-                echo "<td>$hora</td><td>$dia</td>";
+                echo "<td>".date('H:i', strtotime($hora))."</td><td>".date('d/m/Y', strtotime($dia))."</td>";
                 echo "<td align=center><input type=checkbox value=$id name=sel[]></td>";
                 echo "</tr>";
                 }

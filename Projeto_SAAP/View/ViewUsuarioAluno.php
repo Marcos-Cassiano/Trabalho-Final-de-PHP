@@ -23,7 +23,7 @@ $read->ExecutarRead("id", "aluno", "where email = '{$_SESSION['email']}'");
 try {
     $_SESSION['id_aluno'] = $read->getResultado()[0]['id'];
     
-    $read->ExecutarRead('nome', 'aluno', "where id = '{$_SESSION['id']}'");
+    $read->ExecutarRead('nome', 'aluno', "where id = '{$_SESSION['id_aluno']}'");
     
     $nome = $read->getResultado()[0]['nome'];
 } catch (Exception $ex) {
@@ -68,6 +68,7 @@ try {
         $(function(){
             $('#id_disciplina').change(function(){
                 if( $(this).val() ) {
+                    $('#id_horario').html('<option value="">Escolha um Horario</option>');
                     $.getJSON('../Controller/Horario_post.php?search=',{id_disciplina: $(this).val(), ajax: 'true'}, function(j){
                         var options = '<option value="">Escolha um Horario</option>';
                         for (var i = 0; i < j.length; i++) {
@@ -76,7 +77,7 @@ try {
                         $('#id_horario').html(options).show();
                     });
                 } else {
-                    $('#id_horario').html('<option value="">- Escolha um Horario -</option>');
+                    $('#id_horario').html('<option value="">Escolha um Horario</option>');
                 }
             });
         });

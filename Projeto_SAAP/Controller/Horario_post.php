@@ -8,8 +8,8 @@ $getResult = mysqli_query($conn, $result);
 while ($row_h = mysqli_fetch_assoc($getResult)){
     $Horario_post[] = array(
         'id_h'  => $row_h['id_h'],
-        'dia'   => $row_h['dia'],
-        'hora'  => $row_h['hora'],
+        'dia'   => date('d/m/Y', strtotime($row_h['dia'])),
+        'hora'  => date('H:i', strtotime($row_h['hora'])),
     );
 }
 
