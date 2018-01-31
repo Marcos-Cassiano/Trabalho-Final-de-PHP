@@ -17,12 +17,77 @@ $id_aluno2 = $_SESSION['id_aluno'];
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
+    <head><!---------------------CABEÇALHO------------------------------------->
+     <meta charset="UTF-8">
+     <title>Cria Horario</title>
+     <link rel="stylesheet" href="estilo.css">
+
+     
+    
+       
+        
+        <style> 
+
+            h1 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 30px;
+                font-weight: bolder;
+                font-style: italic;   
+                color: green;
+               }
+
+            p{   font-family: segoe ui;
+                 font-size: 25px;
+            }
+
+            h2 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 150px;
+                font-weight: bolder;
+                font-style: italic;         
+            }
+
+            h3 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 45px;
+                font-weight: bolder;
+            }
+
+            h5 {
+                font-family: segoe ui ;
+                letter-spacing:2px;
+                font-size: 40px;
+
+            } 
+            
+            
+          
+
+        </style>
+
+
+        
+    </head><!-------------------FIM CABEÇALHO --------------------------------->
     <body>
-        <h2>Meus Horarios:</h2>
+      
+   
+
+<nav class="links">
+    <a href="ViewUsuarioAluno.php">Home</a>
+    <a href="ViewHorarioAluno.php">Meus Horarios</a>
+    <a href="../Controller/Sair.php">Sair</a>
+</nav>
+<nav class="links2">
+
+</nav>
+
+<nav class="links3">
+
+</nav>
+        <section class="blocoaluno" id="rd_aluno">
         <div>
             <form name="h_deletar" method="post" action="ViewHorarioAluno.php">
             <table border="1">
@@ -54,6 +119,6 @@ $id_aluno2 = $_SESSION['id_aluno'];
                 <input type="submit" value="Deletar" name="bt_deletar"/><br><br>
             </form>
         </div>
-        <a href="../Controller/Sair.php">Sair</a>
+        </section>
     </body>
 </html>

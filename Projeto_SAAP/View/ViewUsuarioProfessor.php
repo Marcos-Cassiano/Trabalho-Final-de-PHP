@@ -31,15 +31,78 @@ $nome = $read->getResultado()[0]['nome'];
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Bem Vindo</h1>
-        <a href="ViewCriarHorario.php">Criar Horario</a><br><br>
-        <a href="ViewHorarioProfessor.php">Meus Horarios</a><br><br>
-        <a href="../Controller/Sair.php">Sair</a>
+    <head><!---------------------CABEÇALHO------------------------------------->
+     <meta charset="UTF-8">
+     <title>SAP</title>
+     <link rel="stylesheet" href="estilo.css">
+
+     
+    
+       
         
+        <style> 
+
+            h1 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 30px;
+                font-weight: bolder;
+                font-style: italic;   
+                color: green;
+               }
+
+            p{   font-family: segoe ui;
+                 font-size: 25px;
+            }
+
+            h2 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 150px;
+                font-weight: bolder;
+                font-style: italic;         
+            }
+
+            h3 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 45px;
+                font-weight: bolder;
+            }
+
+            h5 {
+                font-family: segoe ui ;
+                letter-spacing:2px;
+                font-size: 40px;
+
+            } 
+            
+            
+          
+
+        </style>
+
+
+        
+    </head><!-------------------FIM CABEÇALHO --------------------------------->
+    <body>
+       
+   
+
+<nav class="links">
+    <a href="ViewUsuarioProfessor.php">Home</a>
+    <a href="ViewCriarHorario.php">Criar Horario</a>
+    <a href="ViewHorarioProfessor.php">Meus Horarios</a>
+    <a href="../Controller/Sair.php">Sair</a>
+</nav>
+<nav class="links2">
+
+</nav>
+
+<nav class="links3">
+
+</nav>
+        <section class="blocoaluno" id="rd_aluno">
+        </section>
     </body>
 </html>

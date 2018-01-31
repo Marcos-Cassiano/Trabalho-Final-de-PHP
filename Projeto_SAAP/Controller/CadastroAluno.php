@@ -14,7 +14,6 @@ if(isset($_POST)){
     $email = (string) ($_POST['email']);
     $nome = (string) $_POST['nome'];    
     $sobrenome = (string) $_POST['sobrenome'];    
-    $telefone =(string) $_POST['telefone'];
     $senha = (string) $_POST['senha'];
     $senha2 = (string) $_POST['senha2'];
     
@@ -28,24 +27,13 @@ if(isset($_POST)){
         header("location:../View/ViewCadastroAluno.php");
         die();
     }
-    
-    $validar = new Validar();
-    if(!$validar->Email($email)){
-        header("location:../View/ViewCadastroAluno.php");
-        die();
-    }
         
     if($senha != $senha2){
         header("location:../View/ViewCadastroAluno.php");
         die();
     }
     
-    if(!$telefone == "" && !is_numeric($telefone)){
-        header("location:../View/ViewCadastroAluno.php");
-        die();
-    }
-    
-    $aluno = array('nome'=> $nome,'sobrenome'=> $sobrenome, 'email'=> $email, 'senha'=> md5($senha), 'telefone'=> $telefone);
+    $aluno = array('nome'=> $nome,'sobrenome'=> $sobrenome, 'email'=> $email, 'senha'=> md5($senha));
     $create = new Create();
     
     

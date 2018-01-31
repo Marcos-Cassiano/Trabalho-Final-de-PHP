@@ -33,13 +33,79 @@ try {
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
+<head><!---------------------CABEÇALHO------------------------------------->
+     <meta charset="UTF-8">
+     <title>SAP</title>
+     <link rel="stylesheet" href="estilo.css">
+
+     
+    
+       
+        
+        <style> 
+
+            h1 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 30px;
+                font-weight: bolder;
+                font-style: italic;   
+                color: green;
+               }
+
+            p{   font-family: segoe ui;
+                 font-size: 25px;
+            }
+
+            h2 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 150px;
+                font-weight: bolder;
+                font-style: italic;         
+            }
+
+            h3 {
+                font-family: Segoe ui ;
+                letter-spacing:2px;
+                font-size: 45px;
+                font-weight: bolder;
+            }
+
+            h5 {
+                font-family: segoe ui ;
+                letter-spacing:2px;
+                font-size: 40px;
+
+            } 
+            
+            
+          
+
+        </style>
+
+
+        
+    </head><!-------------------FIM CABEÇALHO --------------------------------->
     <body>
-        <h1>Bem Vindo!</h1>
-        <h2>Selecione a Disciplina:</h2>
+          
+
+   
+
+<nav class="links">
+    <a href="ViewUsuarioAluno.php">Home</a>
+    <a href="ViewHorarioAluno.php">Meus Horarios</a>
+    <a href="../Controller/Sair.php">Sair</a>
+</nav>
+<nav class="links2">
+
+</nav>
+
+<nav class="links3">
+   
+
+</nav>
+        <section class="blocoaluno" id="rd_aluno">
         <form action="../Controller/Salvar_post.php" method="post">
             <label>Disciplina: </label>
             <select name="id_disciplina" id="id_disciplina" >
@@ -52,7 +118,6 @@ try {
                     }
                     ?>
             </select><br><br>
-            <h2>Selecione o Horario:</h2>    
             <label>Horarios:</label>
             <select name="id_horario" id="id_horario">
                 <option value="">Escolha um Horario</option>
@@ -82,7 +147,6 @@ try {
             });
         });
         </script>
-        <a href="ViewHorarioAluno.php">Meus Horarios</a>
-        <a href="../Controller/Sair.php">Sair</a>
+        </section>
     </body>
 </html>
